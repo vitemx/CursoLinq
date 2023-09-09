@@ -8,7 +8,11 @@ LinqQueries linqQueries = new();
 //ImprimirValores(linqQueries.LibrosMas200PaginasContainsAction());
 //Console.WriteLine($"Todos los libros tienen status? {linqQueries.TodosLosLibrosTienenStatus()}");
 //Console.WriteLine($"Existen libros publicados en 2005? {linqQueries.AlgunLibroPublicadoEn2005()}");
-ImprimirValores(linqQueries.PertenecenCategoriaPyton());
+//ImprimirValores(linqQueries.PertenecenCategoriaPyton());
+System.Console.WriteLine("Ordenar Ascendente");
+ImprimirValores(linqQueries.OrdenarLibrosJavaXNombreAscendente());
+System.Console.WriteLine("Ordenar Descendente");
+ImprimirValores(linqQueries.OrdenarLibrosXPaginaDescendente());
 
 void ImprimirValores(IEnumerable<Book>? listaLibros)
 {

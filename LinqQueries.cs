@@ -59,5 +59,18 @@ namespace curso_linq
         }    
 
         #endregion
+
+        #region OrderBy & OrderByDescending
+        public IEnumerable<Book> OrdenarLibrosJavaXNombreAscendente()
+        {
+            return librosCollection.Where(l => l.Categories.Contains("Java")).OrderBy(l => l.Title);
+        }
+
+        public IEnumerable<Book> OrdenarLibrosXPaginaDescendente()
+        {
+            return librosCollection.Where(l => l.PageCount > 450).OrderByDescending(l => l.PageCount);
+        }
+            
+        #endregion
     }
 }
