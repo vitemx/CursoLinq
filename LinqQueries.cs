@@ -30,10 +30,10 @@ namespace curso_linq
         public IEnumerable<Book>? LibrosMas200PaginasContainsAction()
         {
             //extension method
-            //return librosCollection.Where(p => p.PageCount > 250 && p.Title.Contains("Action", StringComparison.InvariantCultureIgnoreCase));
+            //return librosCollection.Where(p => p.PageCount > 250 && p.Title.Contains("in Action", StringComparison.InvariantCultureIgnoreCase));
 
             //query expresion
-            return from l in librosCollection where l.PageCount > 250 && l.Title.Contains("Action") select l;
+            return from l in librosCollection where l.PageCount > 250 && l.Title.Contains("in Action") select l;
         } 
     
     }
