@@ -5,7 +5,10 @@ LinqQueries linqQueries = new();
 
 //ImprimirValores(linqQueries.TodaLaColeccion());
 // ImprimirValores(linqQueries.LibrosDespuesDel2000());
-ImprimirValores(linqQueries.LibrosMas200PaginasContainsAction());
+//ImprimirValores(linqQueries.LibrosMas200PaginasContainsAction());
+//Console.WriteLine($"Todos los libros tienen status? {linqQueries.TodosLosLibrosTienenStatus()}");
+Console.WriteLine($"Existen libros publicados en 2005? {linqQueries.AlgunLibroPublicadoEn2005()}");
+
 
 void ImprimirValores(IEnumerable<Book>? listaLibros)
 {

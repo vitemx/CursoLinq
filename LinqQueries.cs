@@ -18,6 +18,7 @@ namespace curso_linq
             return librosCollection;
         }
 
+        #region Where Operator
         public IEnumerable<Book>? LibrosDespuesDel2000()
         {
             //extension method
@@ -35,6 +36,20 @@ namespace curso_linq
             //query expresion
             return from l in librosCollection where l.PageCount > 250 && l.Title.Contains("in Action") select l;
         } 
-    
+        #endregion
+
+        #region All Operator
+        public bool TodosLosLibrosTienenStatus()
+        {
+            return librosCollection.All(l => l.Status != string.Empty);
+        }
+        #endregion
+
+         #region Any Operator
+        public bool AlgunLibroPublicadoEn2005()
+        {
+            return librosCollection.Any(l => l.PublishedDate.Year == 2005);
+        }
+        #endregion
     }
 }
