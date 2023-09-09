@@ -7,8 +7,8 @@ LinqQueries linqQueries = new();
 // ImprimirValores(linqQueries.LibrosDespuesDel2000());
 //ImprimirValores(linqQueries.LibrosMas200PaginasContainsAction());
 //Console.WriteLine($"Todos los libros tienen status? {linqQueries.TodosLosLibrosTienenStatus()}");
-Console.WriteLine($"Existen libros publicados en 2005? {linqQueries.AlgunLibroPublicadoEn2005()}");
-
+//Console.WriteLine($"Existen libros publicados en 2005? {linqQueries.AlgunLibroPublicadoEn2005()}");
+ImprimirValores(linqQueries.PertenecenCategoriaPyton());
 
 void ImprimirValores(IEnumerable<Book>? listaLibros)
 {

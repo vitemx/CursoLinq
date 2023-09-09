@@ -51,5 +51,13 @@ namespace curso_linq
             return librosCollection.Any(l => l.PublishedDate.Year == 2005);
         }
         #endregion
+
+        #region ContainsOperator
+        public IEnumerable<Book> PertenecenCategoriaPyton()
+        {
+            return librosCollection.Where(l => l.Categories.Contains("Python"));
+        }    
+
+        #endregion
     }
 }
