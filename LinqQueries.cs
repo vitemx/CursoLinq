@@ -41,7 +41,7 @@ namespace curso_linq
         #region All Operator
         public bool TodosLosLibrosTienenStatus()
         {
-            return librosCollection.All(l => l.Status != string.Empty);
+            return librosCollection != null ? librosCollection.All(l => l.Status != string.Empty) : false;
         }
         #endregion
 
@@ -71,6 +71,22 @@ namespace curso_linq
             return librosCollection.Where(l => l.PageCount > 450).OrderByDescending(l => l.PageCount);
         }
             
+        #endregion
+
+        #region Take, Skip Operator
+        public IEnumerable<Book> Selecciona3LibrosRecienteJava()
+        {
+            return librosCollection.Where(l => l.Categories.Contains("Java")).OrderByDescending(l => l.PublishedDate)
+                                        .Take(3);
+        }
+
+        public IEnumerable<Book> TercerCuartoLibroMayor400Paginas()
+        {
+            return librosCollection.Where(l => l.PageCount > 400)
+                                    .Take(4)
+                                    .Skip(2);
+        }
+
         #endregion
     }
 }
