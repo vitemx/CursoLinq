@@ -15,7 +15,8 @@ LinqQueries linqQueries = new();
 // ImprimirValores(linqQueries.OrdenarLibrosXPaginaDescendente());
 // ImprimirValores(linqQueries.Selecciona3LibrosRecienteJava());
 // ImprimirValores(linqQueries.TercerCuartoLibroMayor400Paginas());
-ImprimirValores(linqQueries.ObtenerTituloPaginas());
+//ImprimirValores(linqQueries.ObtenerTituloPaginas());
+System.Console.WriteLine($"Cantidad de libros que tienen entre 200 y 500 paginas son: {linqQueries.ContarLibros200Y500Paginas()}");
 
 void ImprimirValores(IEnumerable<Book>? listaLibros)
 {
