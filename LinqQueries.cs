@@ -1,3 +1,5 @@
+using System.Net.Http.Headers;
+
 namespace curso_linq
 {
     public class LinqQueries
@@ -87,6 +89,14 @@ namespace curso_linq
                                     .Skip(2);
         }
 
+        #endregion
+
+        #region Select operator
+        public IEnumerable<Book> ObtenerTituloPaginas()
+        {
+            return librosCollection.Take(3)
+            .Select(p => new Book() { Title =  p.Title, PageCount = p.PageCount });
+        }
         #endregion
     }
 }

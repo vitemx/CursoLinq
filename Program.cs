@@ -13,8 +13,9 @@ LinqQueries linqQueries = new();
 // ImprimirValores(linqQueries.OrdenarLibrosJavaXNombreAscendente());
 // System.Console.WriteLine("Ordenar Descendente");
 // ImprimirValores(linqQueries.OrdenarLibrosXPaginaDescendente());
-ImprimirValores(linqQueries.Selecciona3LibrosRecienteJava());
-ImprimirValores(linqQueries.TercerCuartoLibroMayor400Paginas());
+// ImprimirValores(linqQueries.Selecciona3LibrosRecienteJava());
+// ImprimirValores(linqQueries.TercerCuartoLibroMayor400Paginas());
+ImprimirValores(linqQueries.ObtenerTituloPaginas());
 
 void ImprimirValores(IEnumerable<Book>? listaLibros)
 {
@@ -23,7 +24,7 @@ void ImprimirValores(IEnumerable<Book>? listaLibros)
         Console.WriteLine("{0, -60} {1, 15} {2, 11} {3, 12}\n", "Titulo", "N.Paginas", "Fecha publicación", "Categoria");
         foreach(var item in listaLibros)
         {
-            Console.WriteLine("{0, -60} {1, 15} {2, 11} {3, 12}", item.Title, item.PageCount, item.PublishedDate.ToShortDateString(), item.Categories[0]);
+            Console.WriteLine("{0, -60} {1, 15} {2, 11} {3, 12}", item.Title, item.PageCount, "na", "NA");
         }
     }
 }
