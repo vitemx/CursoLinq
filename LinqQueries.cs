@@ -157,5 +157,19 @@ namespace curso_linq
 
             
         #endregion
+
+        #region AverageOperator
+
+        public double PromedioCarateresTitulosLibros()
+        {
+            return librosCollection.Average(l => l.Title.Length);
+        }
+
+         public double PromedioNumeroPaginasLibros()
+        {
+            return librosCollection.Where(l => l.PageCount > 0).Average(l => l.PageCount);
+        }
+            
+        #endregion
     }
 }

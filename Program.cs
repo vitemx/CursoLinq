@@ -24,7 +24,9 @@ LinqQueries linqQueries = new();
 // var book = linqQueries.LibroFechaMasReciente();
 // Console.WriteLine($"El libro mas reciente publicado es {book?.Title} publicado el: {book?.PublishedDate.ToShortDateString()}");
 //System.Console.WriteLine($"La suma total de las paginas de los libros es: {linqQueries.SumaPaginasLibros()}");
-System.Console.WriteLine($"Los libros publicados despues del 2015 son: {linqQueries.TitulosLibrosPublicadosDespues2015()}");
+//System.Console.WriteLine($"Los libros publicados despues del 2015 son: {linqQueries.TitulosLibrosPublicadosDespues2015()}");
+//System.Console.WriteLine($"El promedio de caracteres de los titulos de libros es: {linqQueries.PromedioCarateresTitulosLibros()}");
+System.Console.WriteLine($"El promedio de paginas de los libros es de {linqQueries.PromedioNumeroPaginasLibros()}");
 
 
 void ImprimirValores(IEnumerable<Book>? listaLibros)
