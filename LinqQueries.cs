@@ -180,5 +180,14 @@ namespace curso_linq
         }    
         
         #endregion
+
+        #region Lookup
+
+        public ILookup<Char, Book> DiccionarioDeLibrosXLetra()
+        {
+            return librosCollection.ToLookup(l => l.Title[0], l => l);
+        }
+        
+        #endregion
     }
 }

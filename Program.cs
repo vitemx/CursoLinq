@@ -27,7 +27,18 @@ LinqQueries linqQueries = new();
 //System.Console.WriteLine($"Los libros publicados despues del 2015 son: {linqQueries.TitulosLibrosPublicadosDespues2015()}");
 //System.Console.WriteLine($"El promedio de caracteres de los titulos de libros es: {linqQueries.PromedioCarateresTitulosLibros()}");
 //System.Console.WriteLine($"El promedio de paginas de los libros es de {linqQueries.PromedioNumeroPaginasLibros()}");
-ImprimirValoresGrupo(linqQueries.AgrupaLibrosXAnioPublicadosDespues2000());
+// ImprimirValoresGrupo(linqQueries.AgrupaLibrosXAnioPublicadosDespues2000());
+
+ImprimirValoresDiccionario(linqQueries.DiccionarioDeLibrosXLetra(), 'Z' );
+
+void ImprimirValoresDiccionario(ILookup<char, Book> listaLibros, char letra)
+{
+    System.Console.WriteLine("{0, -60} {1, 15} {2, 15}\n", "Titulo", "N.Paginas", "Fecha publicación");
+    foreach (var item in listaLibros[letra])
+    {
+        Console.WriteLine("{0, -60} {1, 15} {2, 15}", item.Title, item.PageCount, item.PublishedDate.ToShortDateString());
+    }
+}
 
 void ImprimirValoresGrupo(IEnumerable<IGrouping<int, Book>> listaLibros)
 {
