@@ -1,6 +1,3 @@
-using System.Net.Http.Headers;
-using System.Reflection.Metadata;
-
 namespace curso_linq
 {
     public class LinqQueries
@@ -51,41 +48,41 @@ namespace curso_linq
          #region Any Operator
         public bool AlgunLibroPublicadoEn2005()
         {
-            return librosCollection.Any(l => l.PublishedDate.Year == 2005);
+            return librosCollection?.Any(l => l.PublishedDate.Year == 2005) ?? false;
         }
         #endregion
 
         #region ContainsOperator
-        public IEnumerable<Book> PertenecenCategoriaPyton()
+        public IEnumerable<Book> ?PertenecenCategoriaPyton()
         {
-            return librosCollection.Where(l => l.Categories.Contains("Python"));
+            return librosCollection?.Where(l => l.Categories.Contains("Python"));
         }    
 
         #endregion
 
         #region OrderBy & OrderByDescending
-        public IEnumerable<Book> OrdenarLibrosJavaXNombreAscendente()
+        public IEnumerable<Book>? OrdenarLibrosJavaXNombreAscendente()
         {
-            return librosCollection.Where(l => l.Categories.Contains("Java")).OrderBy(l => l.Title);
+            return librosCollection?.Where(l => l.Categories.Contains("Java")).OrderBy(l => l.Title);
         }
 
-        public IEnumerable<Book> OrdenarLibrosXPaginaDescendente()
+        public IEnumerable<Book>? OrdenarLibrosXPaginaDescendente()
         {
-            return librosCollection.Where(l => l.PageCount > 450).OrderByDescending(l => l.PageCount);
+            return librosCollection?.Where(l => l.PageCount > 450).OrderByDescending(l => l.PageCount);
         }
             
         #endregion
 
         #region Take, Skip Operator
-        public IEnumerable<Book> Selecciona3LibrosRecienteJava()
+        public IEnumerable<Book>? Selecciona3LibrosRecienteJava()
         {
-            return librosCollection.Where(l => l.Categories.Contains("Java")).OrderByDescending(l => l.PublishedDate)
+            return librosCollection?.Where(l => l.Categories.Contains("Java")).OrderByDescending(l => l.PublishedDate)
                                         .Take(3);
         }
 
-        public IEnumerable<Book> TercerCuartoLibroMayor400Paginas()
+        public IEnumerable<Book>? TercerCuartoLibroMayor400Paginas()
         {
-            return librosCollection.Where(l => l.PageCount > 400)
+            return librosCollection?.Where(l => l.PageCount > 400)
                                     .Take(4)
                                     .Skip(2);
         }
@@ -93,9 +90,9 @@ namespace curso_linq
         #endregion
 
         #region Select operator
-        public IEnumerable<Book> ObtenerTituloPaginas()
+        public IEnumerable<Book>? ObtenerTituloPaginas()
         {
-            return librosCollection.Take(3)
+            return librosCollection?.Take(3)
             .Select(p => new Book() { Title =  p.Title, PageCount = p.PageCount });
         }
         #endregion
@@ -103,7 +100,7 @@ namespace curso_linq
         #region Count & longCount operator
         public long ContarLibros200Y500Paginas()
         {
-            return librosCollection.Count(p => p.PageCount >= 200 && p.PageCount <= 500);
+            return librosCollection?.Count(p => p.PageCount >= 200 && p.PageCount <= 500) ?? 0;
         }
         #endregion
 
@@ -111,12 +108,12 @@ namespace curso_linq
         
         public DateTime MenorFechaPublicacionLibro()
         {
-            return librosCollection.Min(l => l.PublishedDate);
+            return librosCollection?.Min(l => l.PublishedDate) ?? DateTime.Now;
         }
 
         public int RetornaPaginasLibroMasAmplio()
         {
-            return librosCollection.Max(l => l.PageCount);
+            return librosCollection?.Max(l => l.PageCount) ?? 0;
         }
 
         #endregion
@@ -132,6 +129,32 @@ namespace curso_linq
         {
             return librosCollection?.MaxBy(l => l.PublishedDate);
         }
+            
+        #endregion
+
+        #region Sume - Agregate Operator
+
+        public int SumaPaginasLibros()
+        {
+            return librosCollection?.Where(l => l.PageCount >= 0 && l.PageCount <= 500).Sum(l => l.PageCount) ?? 0;
+        }
+
+        public string TitulosLibrosPublicadosDespues2015()
+        {
+            return librosCollection?.Where(l => l.PublishedDate.Year > 2015)
+                                    .Aggregate("", (TitulosLibros, next) => 
+                                    {
+                                        if(TitulosLibros != string.Empty)
+                                        {
+                                            TitulosLibros += " - " + next.Title;
+                                        }
+                                        else{
+                                            TitulosLibros += next.Title;
+                                        }
+                                        return TitulosLibros;
+                                    }) ?? string.Empty;
+        }
+
             
         #endregion
     }
