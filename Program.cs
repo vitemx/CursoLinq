@@ -18,7 +18,11 @@ LinqQueries linqQueries = new();
 //ImprimirValores(linqQueries.ObtenerTituloPaginas());
 //System.Console.WriteLine($"Cantidad de libros que tienen entre 200 y 500 paginas son: {linqQueries.ContarLibros200Y500Paginas()}");
 // System.Console.WriteLine($"La fecha de publicación menor es: {linqQueries.MenorFechaPublicacionLibro()}");
-System.Console.WriteLine($"El mayor libro tiene: {linqQueries.RetornaPaginasLibroMasAmplio()} páginas");
+//System.Console.WriteLine($"El mayor libro tiene: {linqQueries.RetornaPaginasLibroMasAmplio()} páginas");
+// var book = linqQueries.LibrosMenorCantidadPaginas();
+// System.Console.WriteLine($"Libro con menor numero de paginas es: {book.Title} con {book.PageCount}");
+var book = linqQueries.LibroFechaMasReciente();
+Console.WriteLine($"El libro mas reciente publicado es {book?.Title} publicado el: {book?.PublishedDate.ToShortDateString()}");
 
 void ImprimirValores(IEnumerable<Book>? listaLibros)
 {

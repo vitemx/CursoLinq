@@ -1,4 +1,5 @@
 using System.Net.Http.Headers;
+using System.Reflection.Metadata;
 
 namespace curso_linq
 {
@@ -118,6 +119,20 @@ namespace curso_linq
             return librosCollection.Max(l => l.PageCount);
         }
 
+        #endregion
+
+        #region MinBy MaxBy Operator
+
+        public Book? LibrosMenorCantidadPaginas()
+        {
+            return librosCollection?.Where(l => l.PageCount > 0).MinBy(l => l.PageCount);
+        }
+
+        public Book? LibroFechaMasReciente()
+        {
+            return librosCollection?.MaxBy(l => l.PublishedDate);
+        }
+            
         #endregion
     }
 }
