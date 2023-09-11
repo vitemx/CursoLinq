@@ -171,5 +171,14 @@ namespace curso_linq
         }
             
         #endregion
+
+        #region GroupBy Operator
+
+        public IEnumerable<IGrouping<int, Book>> AgrupaLibrosXAnioPublicadosDespues2000()
+        {
+            return librosCollection?.Where(l => l.PublishedDate.Year > 2000).GroupBy(l => l.PublishedDate.Year);
+        }    
+        
+        #endregion
     }
 }

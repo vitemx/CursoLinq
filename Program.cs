@@ -26,7 +26,22 @@ LinqQueries linqQueries = new();
 //System.Console.WriteLine($"La suma total de las paginas de los libros es: {linqQueries.SumaPaginasLibros()}");
 //System.Console.WriteLine($"Los libros publicados despues del 2015 son: {linqQueries.TitulosLibrosPublicadosDespues2015()}");
 //System.Console.WriteLine($"El promedio de caracteres de los titulos de libros es: {linqQueries.PromedioCarateresTitulosLibros()}");
-System.Console.WriteLine($"El promedio de paginas de los libros es de {linqQueries.PromedioNumeroPaginasLibros()}");
+//System.Console.WriteLine($"El promedio de paginas de los libros es de {linqQueries.PromedioNumeroPaginasLibros()}");
+ImprimirValoresGrupo(linqQueries.AgrupaLibrosXAnioPublicadosDespues2000());
+
+void ImprimirValoresGrupo(IEnumerable<IGrouping<int, Book>> listaLibros)
+{
+    foreach (var grupo in listaLibros)
+    {
+        System.Console.WriteLine("");
+        System.Console.WriteLine($"Grupo: { grupo.Key }");
+        System.Console.WriteLine("{0, -60} {1, 15} {2, 15}\n", "Titulo", "N.Paginas", "Fecha publicación");
+        foreach (var item in grupo)
+        {
+            Console.WriteLine("{0, -60} {1, 15} {2, 15}", item.Title, item.PageCount, item.PublishedDate.ToShortDateString());
+        }
+    }
+}
 
 
 void ImprimirValores(IEnumerable<Book>? listaLibros)
