@@ -105,5 +105,19 @@ namespace curso_linq
             return librosCollection.Count(p => p.PageCount >= 200 && p.PageCount <= 500);
         }
         #endregion
+
+        #region Operador min & max
+        
+        public DateTime MenorFechaPublicacionLibro()
+        {
+            return librosCollection.Min(l => l.PublishedDate);
+        }
+
+        public int RetornaPaginasLibroMasAmplio()
+        {
+            return librosCollection.Max(l => l.PageCount);
+        }
+
+        #endregion
     }
 }
