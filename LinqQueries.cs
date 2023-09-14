@@ -181,13 +181,25 @@ namespace curso_linq
         
         #endregion
 
-        #region Lookup
+        #region Lookup Operator
 
         public ILookup<Char, Book> DiccionarioDeLibrosXLetra()
         {
             return librosCollection.ToLookup(l => l.Title[0], l => l);
         }
         
+        #endregion
+
+        #region Join Operator
+
+        public IEnumerable<Book> Libros500YPublicacionMayor2005()
+        {
+            var libros500Paginas = librosCollection.Where(l => l.PageCount > 500);
+            var librosDespues2005 = librosCollection.Where(l => l.PublishedDate.Year > 2005);
+            return libros500Paginas.Join(librosDespues2005, p => p.Title, a => a.Title, (p, a) => p);
+        }
+           
+
         #endregion
     }
 }

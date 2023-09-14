@@ -28,8 +28,8 @@ LinqQueries linqQueries = new();
 //System.Console.WriteLine($"El promedio de caracteres de los titulos de libros es: {linqQueries.PromedioCarateresTitulosLibros()}");
 //System.Console.WriteLine($"El promedio de paginas de los libros es de {linqQueries.PromedioNumeroPaginasLibros()}");
 // ImprimirValoresGrupo(linqQueries.AgrupaLibrosXAnioPublicadosDespues2000());
-
-ImprimirValoresDiccionario(linqQueries.DiccionarioDeLibrosXLetra(), 'Z' );
+//ImprimirValoresDiccionario(linqQueries.DiccionarioDeLibrosXLetra(), 'Z' );
+ImprimirValores(linqQueries.Libros500YPublicacionMayor2005());
 
 void ImprimirValoresDiccionario(ILookup<char, Book> listaLibros, char letra)
 {
@@ -59,10 +59,10 @@ void ImprimirValores(IEnumerable<Book>? listaLibros)
 {
     if(listaLibros != null)
     {
-        Console.WriteLine("{0, -60} {1, 15} {2, 11} {3, 12}\n", "Titulo", "N.Paginas", "Fecha publicación", "Categoria");
+        Console.WriteLine("{0, -60} {1, 15} {2, 11}\n", "Titulo", "N.Paginas", "Fecha publicación");
         foreach(var item in listaLibros)
         {
-            Console.WriteLine("{0, -60} {1, 15} {2, 11} {3, 12}", item.Title, item.PageCount, "na", "NA");
+            Console.WriteLine("{0, -60} {1, 15} {2, 11}", item.Title, item.PageCount, item.PublishedDate.ToShortDateString());
         }
     }
 }
